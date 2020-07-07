@@ -3,6 +3,7 @@ package com.coding_cole.bingo.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.coding_cole.bingo.R
 import com.coding_cole.bingo.model.DogBreed
@@ -29,5 +30,8 @@ class DogsListAdapter(val dogsList: ArrayList<DogBreed>) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         holder.view.name.text = dogsList[position].dogBreed
         holder.view.life_span.text = dogsList[position].lifeSpan
+        holder.view.setOnClickListener {
+            Navigation.findNavController(it).navigate(ListFragmentDirections.actionDetailFragment())
+        }
     }
 }
